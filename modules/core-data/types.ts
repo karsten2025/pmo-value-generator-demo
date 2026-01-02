@@ -1,33 +1,41 @@
 // modules/core-data/types.ts
 
-// NEU: Ein Typ für mehrsprachige Texte
 export interface LocalizedString {
   de: string;
   en: string;
   es: string;
 }
 
-// 1. Die Reifegrade
 export interface MaturityLevel {
   level: 1 | 2 | 3 | 4 | 5;
-  title: LocalizedString; // War vorher string, jetzt LocalizedString
-  criteria: LocalizedString; // War vorher string
+  title: LocalizedString;
+  criteria: LocalizedString;
 }
 
-// 2. Die Services
 export interface PMOService {
   id: string;
-  name: LocalizedString; // Jetzt mehrsprachig
+
+  // EBENE 1: Die "weiche" Frontend-Darstellung (für User/Betriebsrat)
+  // Fokus: Gesundheit, Balance, Stabilität
+  name: LocalizedString;
+  description: LocalizedString;
+  deliverables: LocalizedString[];
+  kpis: LocalizedString[]; // Hier stehen die "Vital-Werte"
+
+  // EBENE 2: Die "harte" Business-Realität (für den Report/Management)
+  // Fokus: Effizienz, ROI, Geld
+  businessName?: LocalizedString; // z.B. "Resource Optimization" statt "Balance"
+  hardKpis?: LocalizedString[]; // z.B. "FTE Utilization Rate" statt "Team-Stimmung"
+  roiImpact?: LocalizedString; // Der monetäre Hebel
+
   category: "Strategic" | "Tactical" | "Operational";
-  description: LocalizedString; // Jetzt mehrsprachig
   maturityLevels: MaturityLevel[];
 }
 
-// 3. Die Outcomes
 export interface PMOOutcome {
   id: string;
-  name: LocalizedString; // Jetzt mehrsprachig
-  description: LocalizedString; // Jetzt mehrsprachig
-  category: LocalizedString; // Jetzt mehrsprachig (z.B. "Ressourcen" / "Resources")
+  name: LocalizedString;
+  description: LocalizedString;
+  category: LocalizedString;
   recommendedServiceIds: string[];
 }
