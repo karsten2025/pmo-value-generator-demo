@@ -6,63 +6,63 @@ export const services: PMOService[] = [
     id: "S-01",
     // FRONTEND: Weich & Strategisch (Zukunftsfähigkeit)
     name: {
-      de: "Strategische Beratung & Ausrichtung",
-      en: "Executive Strategy Advisory",
-      es: "Asesoramiento Estratégico",
+      de: "Strategische Klarheit & Ausrichtung",
+      en: "Strategic Clarity & Alignment",
+      es: "Claridad y Alineación Estratégica",
     },
     description: {
-      de: "Sicherung der Zukunftsfähigkeit durch strategische Klarheit.",
-      en: "Ensuring future viability through strategic clarity.",
-      es: "Asegurar la viabilidad futura mediante claridad estratégica.",
+      de: "Sicherstellung, dass alle Kraft in die richtigen Themen fließt.",
+      en: "Ensuring energy flows into the right topics.",
+      es: "Asegurar que la energía fluya hacia los temas correctos.",
     },
     deliverables: [
       {
-        de: "Entscheidungsvorlagen",
-        en: "Decision Memos",
-        es: "Memorandos de decisión",
+        de: "Orientierungshilfe für Entscheidungen",
+        en: "Decision Guidance",
+        es: "Guía de decisión",
       },
       {
-        de: "Strategische Landkarte",
-        en: "Strategic Map",
-        es: "Mapa estratégico",
+        de: "Landkarte der strategischen Ziele",
+        en: "Strategic Goal Map",
+        es: "Mapa de objetivos estratégicos",
       },
     ],
     kpis: [
       // Soft: Vital-Werte
       {
+        de: "Gefühlte Sinnhaftigkeit der Projekte",
+        en: "Perceived Purpose",
+        es: "Propósito percibido",
+      },
+      {
         de: "Strategische Stimmigkeit",
         en: "Strategic Fit",
         es: "Ajuste estratégico",
       },
-      {
-        de: "Wertbeitrag zur Gesundheit",
-        en: "Value Contribution",
-        es: "Contribución de valor",
-      },
     ],
 
-    // BACKEND: Hart & Monetär (Rationalisierung)
+    // BACKEND: OPM & Business (Hart)
     businessName: {
-      de: "Portfolio-Rationalisierung & ROI-Optimierung",
-      en: "Portfolio Rationalization & ROI Optimization",
-      es: "Racionalización de cartera y optimización del ROI",
+      de: "Portfolio Value & Strategic Alignment (OPM)",
+      en: "Portfolio Value & Strategic Alignment",
+      es: "Valor de Cartera y Alineación",
     },
     hardKpis: [
       {
-        de: "Portfolio ROI > 15%",
-        en: "Portfolio ROI > 15%",
-        es: "ROI de cartera > 15%",
+        de: "Portfolio ROI Optimierung",
+        en: "Portfolio ROI Optimization",
+        es: "Optimización ROI",
       },
       {
-        de: "Reduzierung 'Sunk Costs' um 20%",
-        en: "Sunk Cost Reduction 20%",
-        es: "Reducción de costos hundidos 20%",
+        de: "Strategischer Deckungsgrad > 90%",
+        en: "Strategic Coverage > 90%",
+        es: "Cobertura estratégica > 90%",
       },
     ],
     roiImpact: {
-      de: "Vermeidung von Fehlinvestitionen im 6-stelligen Bereich.",
-      en: "Prevention of bad investments in the 6-figure range.",
-      es: "Prevención de malas inversiones en el rango de 6 cifras.",
+      de: "Vermeidung von 'Waste' durch OPM-konformes Portfolio-Management[cite: 148].",
+      en: "Avoidance of waste through OPM-compliant portfolio management.",
+      es: "Evitación de desperdicios mediante gestión de cartera.",
     },
     category: "Strategic",
     maturityLevels: [],
@@ -72,12 +72,12 @@ export const services: PMOService[] = [
     id: "S-10",
     // FRONTEND: Fürsorglich (Balance & Schutz)
     name: {
-      de: "Kapazitäts-Balance & Planung",
-      en: "Capacity Balance Planning",
-      es: "Equilibrio de Capacidad",
+      de: "Team-Balance & Planung",
+      en: "Team Balance & Planning",
+      es: "Equilibrio de Equipo",
     },
     description: {
-      de: "Schutz vor Überlastung durch vorausschauende Planung.",
+      de: "Schutz vor Überlastung durch vorausschauende Einteilung.",
       en: "Protection against overload through forward planning.",
       es: "Protección contra sobrecarga mediante planificación.",
     },
@@ -88,43 +88,47 @@ export const services: PMOService[] = [
         es: "Previsión de demanda",
       },
       {
-        de: "Verfügbarkeits-Check",
-        en: "Availability Check",
-        es: "Verificación de disponibilidad",
+        de: "Machbarkeits-Check",
+        en: "Feasibility Check",
+        es: "Verificación de viabilidad",
       },
     ],
     kpis: [
       // Soft
-      { de: "Team-Balance", en: "Team Balance", es: "Equilibrio del equipo" },
+      {
+        de: "Gesunde Team-Belastung",
+        en: "Healthy Team Load",
+        es: "Carga de equipo saludable",
+      },
       {
         de: "Planungs-Ruhe",
-        en: "Planning Stability",
-        es: "Estabilidad de planificación",
+        en: "Planning Calmness",
+        es: "Calma en la planificación",
       },
     ],
 
-    // BACKEND: Effizienz (Auslastung & Kosten)
+    // BACKEND: OPM & Business (Hart)
     businessName: {
-      de: "Ressourcen-Effizienz-Steigerung",
-      en: "Resource Efficiency Maximization",
-      es: "Maximización de la eficiencia de recursos",
+      de: "Resource Optimization & Capacity Mgmt (OPM)",
+      en: "Resource Optimization",
+      es: "Optimización de Recursos",
     },
     hardKpis: [
       {
-        de: "FTE-Auslastungsgrad > 85%",
-        en: "FTE Utilization > 85%",
-        es: "Utilización FTE > 85%",
+        de: "FTE-Effizienz-Steigerung",
+        en: "FTE Efficiency Increase",
+        es: "Aumento de eficiencia FTE",
       },
       {
-        de: "Senkung externer Tagessätze",
-        en: "Contractor Rate Reduction",
-        es: "Reducción de tarifas de contratistas",
+        de: "Reduzierung externer Kosten",
+        en: "External Cost Reduction",
+        es: "Reducción de costos externos",
       },
     ],
     roiImpact: {
-      de: "Reduzierung externer Kosten um 15-20% durch optimale interne Allokation.",
-      en: "External cost reduction of 15-20% via optimal allocation.",
-      es: "Reducción de costos externos del 15-20%.",
+      de: "Maximierung der Ressourcen-Nutzung durch OPM-Kapazitätsplanung[cite: 198].",
+      en: "Maximizing resource utilization via OPM capacity planning.",
+      es: "Maximización de utilización de recursos.",
     },
     category: "Tactical",
     maturityLevels: [],
@@ -139,50 +143,58 @@ export const services: PMOService[] = [
       es: "Facilitación de Cambios",
     },
     description: {
-      de: "Gemeinsame Einordnung neuer Anforderungen.",
-      en: "Joint assessment of new requirements.",
-      es: "Evaluación conjunta de nuevos requisitos.",
+      de: "Gemeinsamer Umgang mit neuen Anforderungen ohne Chaos.",
+      en: "Handling new requirements together without chaos.",
+      es: "Manejo conjunto de nuevos requisitos.",
     },
     deliverables: [
-      { de: "Änderungs-Logbuch", en: "Change Log", es: "Registro de cambios" },
       {
-        de: "Auswirkungs-Prognose",
-        en: "Impact Forecast",
-        es: "Pronóstico de impacto",
+        de: "Änderungs-Übersicht",
+        en: "Change Overview",
+        es: "Resumen de cambios",
+      },
+      {
+        de: "Auswirkungs-Check",
+        en: "Impact Check",
+        es: "Verificación de impacto",
       },
     ],
     kpis: [
       // Soft
       {
-        de: "Reaktions-Qualität",
-        en: "Response Quality",
-        es: "Calidad de respuesta",
+        de: "Stabilität im Arbeitsalltag",
+        en: "Workday Stability",
+        es: "Estabilidad laboral",
       },
-      { de: "Verlässlichkeit", en: "Reliability", es: "Fiabilidad" },
+      {
+        de: "Verlässlichkeit von Zusagen",
+        en: "Reliability",
+        es: "Fiabilidad",
+      },
     ],
 
-    // BACKEND: Controlling (Kostenkontrolle)
+    // BACKEND: OPM & Business (Hart)
     businessName: {
-      de: "Scope Creep Prevention & Cost Control",
-      en: "Scope Creep Prevention",
-      es: "Prevención de desviación de alcance",
+      de: "Scope Control & Variance Mgmt (OPM)",
+      en: "Scope Control",
+      es: "Control de Alcance",
     },
     hardKpis: [
       {
-        de: "Kostenabweichung < 5%",
-        en: "Cost Variance < 5%",
-        es: "Variación de costos < 5%",
+        de: "Minimierung Scope Creep",
+        en: "Minimize Scope Creep",
+        es: "Minimizar desviación",
       },
       {
-        de: "Abgelehnte CRs (Cost Avoidance)",
-        en: "Rejected CRs Value",
-        es: "Valor de CRs rechazados",
+        de: "Budget-Treue",
+        en: "Budget Adherence",
+        es: "Adherencia presupuestaria",
       },
     ],
     roiImpact: {
-      de: "Verhinderung unbezahlter Mehraufwände (Scope Creep).",
-      en: "Prevention of unpaid additional work (Scope Creep).",
-      es: "Prevención de trabajo adicional no remunerado.",
+      de: "Kostenschutz durch formalisierte Governance[cite: 921].",
+      en: "Cost protection through formalized governance.",
+      es: "Protección de costos mediante gobernanza.",
     },
     category: "Operational",
     maturityLevels: [],
@@ -192,121 +204,125 @@ export const services: PMOService[] = [
     id: "S-17",
     // FRONTEND: Unterstützend (Rücken freihalten)
     name: {
-      de: "Lösungsunterstützung",
-      en: "Solution Support",
-      es: "Soporte de Soluciones",
+      de: "Hindernis-Beseitigung",
+      en: "Obstacle Removal",
+      es: "Eliminación de Obstáculos",
     },
     description: {
-      de: "Aktive Beseitigung von Hindernissen für die Teams.",
-      en: "Active removal of obstacles for teams.",
-      es: "Eliminación activa de obstáculos.",
+      de: "Aktive Unterstützung, um den Teams den Rücken frei zu halten.",
+      en: "Active support to keep teams' backs free.",
+      es: "Apoyo activo para los equipos.",
     },
     deliverables: [
       {
-        de: "Hindernis-Register",
-        en: "Obstacle Register",
-        es: "Registro de obstáculos",
+        de: "Lösungs-Register",
+        en: "Solution Register",
+        es: "Registro de soluciones",
       },
       {
-        de: "Unterstützungs-Matrix",
-        en: "Support Matrix",
-        es: "Matriz de soporte",
+        de: "Unterstützungs-Wege",
+        en: "Support Paths",
+        es: "Rutas de soporte",
       },
     ],
     kpis: [
       // Soft
       {
-        de: "Lösungs-Dynamik",
-        en: "Solution Momentum",
-        es: "Impulso de solución",
+        de: "Ungestörter Arbeitsfluss",
+        en: "Uninterrupted Flow",
+        es: "Flujo ininterrumpido",
       },
-      { de: "Projekt-Fluss", en: "Project Flow", es: "Flujo del proyecto" },
+      {
+        de: "Schnelle Hilfe bei Problemen",
+        en: "Fast Help",
+        es: "Ayuda rápida",
+      },
     ],
 
-    // BACKEND: Performance (Geschwindigkeit & Downtime)
+    // BACKEND: OPM & Business (Hart)
     businessName: {
-      de: "Issue Resolution Speed & Downtime Reduction",
-      en: "Issue Resolution Efficiency",
-      es: "Eficiencia en resolución de problemas",
+      de: "Issue Resolution & Risk Mitigation (OPM)",
+      en: "Issue Resolution",
+      es: "Resolución de Problemas",
     },
     hardKpis: [
       {
-        de: "Mean Time to Resolve (MTTR) < 2 Tage",
-        en: "MTTR < 2 Days",
-        es: "MTTR < 2 días",
+        de: "Reduzierung Downtime",
+        en: "Downtime Reduction",
+        es: "Reducción de inactividad",
       },
       {
-        de: "Vermeidung von Projektstopps",
-        en: "Downtime Avoidance",
-        es: "Evitación de tiempos de inactividad",
+        de: "Erhöhung Delivery Velocity",
+        en: "Increase Delivery Velocity",
+        es: "Aumento de velocidad",
       },
     ],
     roiImpact: {
-      de: "Beschleunigung Time-to-Market durch Blockaden-Lösung.",
-      en: "Faster Time-to-Market via blocker removal.",
-      es: "Tiempo de comercialización más rápido.",
+      de: "Sicherung der Time-to-Market durch OPM Risk Management[cite: 1404].",
+      en: "Securing Time-to-Market via OPM Risk Management.",
+      es: "Asegurar Time-to-Market.",
     },
     category: "Operational",
     maturityLevels: [],
   },
 ];
 
-// Outcomes (Probleme) bleiben "Soft" und User-zentriert
+// Outcomes (Probleme) bleiben nutzerzentriert
 export const outcomes: PMOOutcome[] = [
   {
     id: "O-01",
     name: {
-      de: "Verfügbarkeit von Fachkräften sichern",
-      en: "Securing Skilled Talent",
-      es: "Asegurar Talento Cualificado",
+      de: "Fachkräfte finden & halten",
+      en: "Retain Talent",
+      es: "Retener Talento",
     },
     description: {
-      de: "Herausforderung, geeignetes Personal rechtzeitig und nachhaltig einzuplanen.",
-      en: "Challenges in sourcing and retaining qualified project management staff.",
-      es: "Desafíos en la búsqueda y retención de personal cualificado para proyectos.",
+      de: "Schwierigkeit, Personal nachhaltig und gesund einzuplanen.",
+      en: "Difficulty planning staff sustainably.",
+      es: "Dificultad para planificar personal.",
     },
     category: {
-      de: "Kapazität & Kompetenz",
-      en: "Resources & Talent",
-      es: "Recursos y Talento",
+      de: "Kapazität & Mensch",
+      en: "Capacity & People",
+      es: "Capacidad y Personas",
     },
     recommendedServiceIds: ["S-10"],
   },
   {
     id: "O-18",
     name: {
-      de: "Budget- & Planungssicherheit",
-      en: "Budget Integrity & Cost Control",
-      es: "Integridad Presupuestaria y Control",
+      de: "Planungssicherheit gewinnen",
+      en: "Gain Certainty",
+      es: "Ganar Certeza",
     },
     description: {
-      de: "Bedarf nach höherer Transparenz und Verlässlichkeit bei der Kostenentwicklung.",
-      en: "Recurring issues with project costs exceeding planned limits.",
-      es: "Problemas recurrentes con costos de proyectos que exceden los límites.",
+      de: "Wunsch nach mehr Verlässlichkeit bei Kosten und Terminen.",
+      en: "Desire for more reliability.",
+      es: "Deseo de más fiabilidad.",
     },
     category: {
       de: "Prozesse & Struktur",
-      en: "Process & Control",
-      es: "Procesos y Control",
+      en: "Process & Structure",
+      es: "Procesos y Estructura",
     },
     recommendedServiceIds: ["S-14", "S-17"],
   },
   {
     id: "O-06",
     name: {
-      de: "Strategischer Beitrag der Projekte",
-      en: "Strategic Project Alignment",
-      es: "Alineación Estratégica de Proyectos",
+      de: "Sinnvolle Projekte priorisieren",
+      en: "Prioritize Projects",
+      es: "Priorizar Proyectos",
     },
     description: {
-      de: "Sicherstellung, dass Projekte wirksam auf die Unternehmensziele einzahlen.",
-      en: "Current initiatives do not contribute effectively to organizational goals.",
-      es: "Las iniciativas actuales no contribuyen eficazmente a los objetivos organizacionales.",
+      de: "Sicherstellen, dass wir an den wirklich wichtigen Dingen arbeiten.",
+      en: "Ensuring we work on what matters.",
+      es: "Asegurar que trabajamos en lo importante.",
     },
     category: {
-      de: "Strategie & Ausrichtung",
-      en: "Strategy & Alignment",
-      es: "Estrategia y Alineación",
+      de: "Strategie & Fokus",
+      en: "Strategy & Focus",
+      es: "Estrategia y Enfoque",
     },
     recommendedServiceIds: ["S-01"],
   },
