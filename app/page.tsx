@@ -10,7 +10,7 @@ type Language = "de" | "en" | "es";
 export default function Home() {
   const [lang, setLang] = useState<Language>("de");
   const [showModal, setShowModal] = useState(false);
-  const [isManagementView, setIsManagementView] = useState(false); // NEU: Der "Geheimschalter"
+  const [isManagementView, setIsManagementView] = useState(false);
   const { selectedOutcomeIds, toggleOutcome } = useStore();
 
   const uiTexts = {
@@ -25,8 +25,8 @@ export default function Home() {
       modalIntro:
         "Basierend auf Ihrer Analyse schlagen wir folgende Maßnahmen vor.",
       modalClose: "Schließen",
-      modalPrint: "Exportieren",
-      viewToggle: "Management View (OPM)", // Beschriftung für den Schalter
+      viewToggle: "Management View (OPM)",
+      roadmapLabel: "🏗️ Implementierungs-Roadmap (OPM Standard):", // NEU
     },
     en: {
       title: "PMO Value Generator",
@@ -38,8 +38,8 @@ export default function Home() {
       modalTitle: "Solution Concept & Value",
       modalIntro: "Based on your analysis, we propose the following measures.",
       modalClose: "Close",
-      modalPrint: "Export",
       viewToggle: "Management View (OPM)",
+      roadmapLabel: "🏗️ Implementation Roadmap (OPM Standard):", // NEU
     },
     es: {
       title: "Generador de Valor PMO",
@@ -51,8 +51,8 @@ export default function Home() {
       modalTitle: "Concepto de Solución y Valor",
       modalIntro: "Basado en su análisis, proponemos las siguientes medidas.",
       modalClose: "Cerrar",
-      modalPrint: "Exportar",
       viewToggle: "Vista de Gestión (OPM)",
+      roadmapLabel: "🏗️ Hoja de ruta de implementación:", // NEU
     },
   };
 
@@ -241,7 +241,6 @@ export default function Home() {
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="bg-slate-900 border border-slate-700 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl animate-in zoom-in-95 duration-200 flex flex-col">
-            {/* Header mit Toggle Switch */}
             <div className="p-6 border-b border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center bg-slate-900 sticky top-0 z-10 gap-4">
               <div>
                 <h2 className="text-2xl font-bold text-white mb-1">
@@ -251,9 +250,7 @@ export default function Home() {
                   {uiTexts[lang].modalIntro}
                 </p>
               </div>
-
               <div className="flex items-center gap-4">
-                {/* DER MAGISCHE SCHALTER */}
                 <label className="flex items-center cursor-pointer select-none">
                   <div className="relative">
                     <input
@@ -277,7 +274,6 @@ export default function Home() {
                     {isManagementView ? "Management (Hard)" : "Team (Soft)"}
                   </div>
                 </label>
-
                 <button
                   onClick={() => setShowModal(false)}
                   className="text-slate-500 hover:text-white bg-slate-800 hover:bg-slate-700 p-2 rounded-full transition-colors"
@@ -297,7 +293,6 @@ export default function Home() {
                       : "border-emerald-500/30 bg-slate-950/50"
                   }`}
                 >
-                  {/* Service Titel passt sich an View an */}
                   <div
                     className={`p-4 border-b flex justify-between items-center ${
                       isManagementView
@@ -330,7 +325,6 @@ export default function Home() {
                   </div>
 
                   <div className="p-5 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Linke Seite: Was tun wir? */}
                     <div>
                       <h4 className="text-xs uppercase font-bold text-slate-500 mb-3 tracking-wider">
                         {isManagementView
@@ -349,8 +343,6 @@ export default function Home() {
                         ))}
                       </ul>
                     </div>
-
-                    {/* Rechte Seite: Der Effekt (Variiert stark!) */}
                     <div
                       className={`p-4 rounded-lg ${
                         isManagementView
@@ -369,7 +361,6 @@ export default function Home() {
                           ? "📈 ROI & KPI (Business Case)"
                           : "❤️ Vital-Werte (Team)"}
                       </h4>
-
                       <ul className="space-y-2 mb-4">
                         {(isManagementView && service.hardKpis
                           ? service.hardKpis
@@ -392,8 +383,6 @@ export default function Home() {
                           </li>
                         ))}
                       </ul>
-
-                      {/* ROI Box nur im Management View */}
                       {isManagementView && service.roiImpact && (
                         <div className="mt-4 pt-3 border-t border-blue-500/30 text-xs text-blue-200 italic">
                           "{service.roiImpact[lang]}"
@@ -401,6 +390,50 @@ export default function Home() {
                       )}
                     </div>
                   </div>
+
+                  {/* NEU: DIE VISUELLE VORSCHAU DER ROADMAP */}
+                  {service.implementationPlan && (
+                    <div className="px-5 pb-5">
+                      <div className="bg-slate-900/50 rounded-lg p-3 border border-slate-800">
+                        <h5 className="text-[10px] uppercase font-bold text-slate-500 mb-3 flex items-center gap-2">
+                          {uiTexts[lang].roadmapLabel}
+                        </h5>
+
+                        {/* Horizontal Scrollbarer Container für die Phasen */}
+                        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700">
+                          {service.implementationPlan.map((phase, pIdx) => (
+                            <div
+                              key={pIdx}
+                              className="flex-none w-36 bg-slate-800 p-2 rounded border border-slate-700 flex flex-col"
+                            >
+                              <div
+                                className={`text-[9px] font-bold uppercase mb-2 border-b border-slate-700 pb-1 ${
+                                  pIdx === 0
+                                    ? "text-emerald-400"
+                                    : pIdx === 4
+                                    ? "text-blue-400"
+                                    : "text-slate-300"
+                                }`}
+                              >
+                                {pIdx + 1}. {phase.phase}
+                              </div>
+                              <ul className="space-y-1.5 flex-grow">
+                                {phase.steps.map((step, sIdx) => (
+                                  <li
+                                    key={sIdx}
+                                    className="text-[9px] text-slate-400 leading-tight flex gap-1"
+                                  >
+                                    <span className="text-slate-600">•</span>
+                                    <span>{step.title[lang]}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

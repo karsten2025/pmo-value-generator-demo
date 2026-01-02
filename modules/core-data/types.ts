@@ -12,21 +12,35 @@ export interface MaturityLevel {
   criteria: LocalizedString;
 }
 
+// NEU: Definition eines einzelnen Prozess-Schritts
+export interface ProcessStep {
+  id: string;
+  title: LocalizedString;
+  description: LocalizedString; // Was genau ist zu tun?
+}
+
+// NEU: Die Prozess-Gruppe (Der Container)
+export interface ProcessGroup {
+  phase: "Initiating" | "Planning" | "Executing" | "Monitoring" | "Closing";
+  steps: ProcessStep[];
+}
+
 export interface PMOService {
   id: string;
 
-  // EBENE 1: Die "weiche" Frontend-Darstellung (für User/Betriebsrat)
-  // Fokus: Gesundheit, Balance, Stabilität
+  // Frontend / Soft
   name: LocalizedString;
   description: LocalizedString;
   deliverables: LocalizedString[];
-  kpis: LocalizedString[]; // Hier stehen die "Vital-Werte"
+  kpis: LocalizedString[];
 
-  // EBENE 2: Die "harte" Business-Realität (für den Report/Management)
-  // Fokus: Effizienz, ROI, Geld
-  businessName?: LocalizedString; // z.B. "Resource Optimization" statt "Balance"
-  hardKpis?: LocalizedString[]; // z.B. "FTE Utilization Rate" statt "Team-Stimmung"
-  roiImpact?: LocalizedString; // Der monetäre Hebel
+  // Backend / Hard
+  businessName?: LocalizedString;
+  hardKpis?: LocalizedString[];
+  roiImpact?: LocalizedString;
+
+  // NEU: Der konkrete Fahrplan (Prozess-Kollektion)
+  implementationPlan: ProcessGroup[];
 
   category: "Strategic" | "Tactical" | "Operational";
   maturityLevels: MaturityLevel[];
