@@ -1,64 +1,67 @@
 // modules/core-data/data.ts
 import { PMOService, PMOOutcome } from "./types";
 
+// HINWEIS: Die Texte wurden paraphrasiert, um Urheberrechtsverletzungen zu vermeiden.
+// Sie basieren auf gängigen PMO-Standards, sind aber keine 1:1 Kopien aus dem Guide.
+
 export const services: PMOService[] = [
   {
     id: "S-01",
     name: {
-      de: "Beratung der Geschäftsführung",
-      en: "Advice to executive level",
-      es: "Asesoramiento a nivel ejecutivo",
+      de: "Strategische Beratung der Führungsebene",
+      en: "Executive Strategy Advisory",
+      es: "Asesoramiento Estratégico Ejecutivo",
     },
     category: "Strategic",
     description: {
-      de: "Bereitstellung strategischer Beratung für Führungskräfte zu Portfolio- und Projektmanagement.",
-      en: "Providing strategic guidance and advice to senior executives on portfolio, program, and project management.",
-      es: "Proporcionar orientación estratégica y asesoramiento a altos ejecutivos sobre gestión de carteras y proyectos.",
+      de: "Unterstützung des Managements mit datengestützten Analysen zur Portfolio-Optimierung.",
+      en: "Supporting senior leadership with data-driven insights for portfolio and project decisions.",
+      es: "Apoyo a la alta dirección con análisis basados en datos para decisiones de cartera.",
     },
-    maturityLevels: [], // (Gekürzt für Übersichtlichkeit, Logik bleibt gleich)
+    maturityLevels: [],
   },
   {
     id: "S-10",
     name: {
-      de: "Ressourcenmanagement",
-      en: "Resource management",
-      es: "Gestión de recursos",
+      de: "Ressourcen- & Kapazitätsplanung",
+      en: "Resource Capacity Planning",
+      es: "Planificación de Capacidad y Recursos",
     },
     category: "Tactical",
     description: {
-      de: "Effektive Zuweisung und Verwaltung von Ressourcen über Projekte hinweg.",
-      en: "Allocating and managing resources effectively across projects to ensure optimal utilization.",
-      es: "Asignación y gestión efectiva de recursos a través de proyectos para asegurar una utilización óptima.",
+      de: "Optimierung der Mitarbeiterauslastung über alle laufenden Projekte hinweg.",
+      en: "Ensuring efficient distribution and utilization of personnel across all initiatives.",
+      es: "Asegurar la distribución y utilización eficiente del personal en todas las iniciativas.",
     },
     maturityLevels: [],
   },
   {
     id: "S-14",
     name: {
-      de: "Change Control Management",
-      en: "Change control management",
-      es: "Gestión de control de cambios",
+      de: "Änderungsmanagement (Change Control)",
+      en: "Project Change Control",
+      es: "Control de Cambios del Proyecto",
     },
     category: "Operational",
     description: {
-      de: "Überwachung des Änderungsprozesses in Programmen und Projekten.",
-      en: "Overseeing the change control process to manage changes in programs and projects.",
-      es: "Supervisión del proceso de control de cambios para gestionar cambios en programas y proyectos.",
+      de: "Strukturierter Prozess zur Bewertung und Genehmigung von Projektänderungen.",
+      en: "Structured handling of scope and requirement changes to prevent scope creep.",
+      es: "Manejo estructurado de cambios de alcance y requisitos para evitar desviaciones.",
     },
     maturityLevels: [],
   },
   {
     id: "S-17",
     name: {
-      de: "Issue Management",
-      en: "Issue management",
-      es: "Gestión de incidencias",
+      de: "Problem- & Issue-Lösung",
+      en: "Issue & Problem Resolution",
+      es: "Resolución de Problemas e Incidencias",
     },
     category: "Operational",
     description: {
-      de: "Identifizierung und Nachverfolgung von Problemen zur schnellen Lösung.",
-      en: "Identifying, tracking, and managing issues to ensure they are resolved promptly.",
-      es: "Identificación, seguimiento y gestión de incidencias para asegurar su pronta resolución.",
+      de: "Systematische Erfassung und Beseitigung von Hindernissen im Projektverlauf.",
+      en: "Systematic tracking and resolving of blockers that threaten project success.",
+      es: "Seguimiento sistemático y resolución de bloqueos que amenazan el éxito del proyecto.",
     },
     maturityLevels: [],
   },
@@ -68,14 +71,14 @@ export const outcomes: PMOOutcome[] = [
   {
     id: "O-01",
     name: {
-      de: "Bessere Verfügbarkeit qualifizierter Ressourcen",
-      en: "Better availability of skilled resources",
-      es: "Mejor disponibilidad de recursos cualificados",
+      de: "Verfügbarkeit von Fachkräften sichern",
+      en: "Securing Skilled Talent",
+      es: "Asegurar Talento Cualificado",
     },
     description: {
-      de: "Schwierigkeiten, qualifizierte Ressourcen zu finden und zu halten.",
-      en: "Difficulty finding and retaining skilled program or project management resources.",
-      es: "Dificultad para encontrar y retener recursos cualificados de gestión de proyectos.",
+      de: "Herausforderung, geeignetes Personal für Projekte zu finden und zu binden.",
+      en: "Challenges in sourcing and retaining qualified project management staff.",
+      es: "Desafíos en la búsqueda y retención de personal cualificado para proyectos.",
     },
     category: {
       de: "Ressourcen & Talent",
@@ -87,14 +90,14 @@ export const outcomes: PMOOutcome[] = [
   {
     id: "O-18",
     name: {
-      de: "Verbessertes Projektbudget-Management",
-      en: "Improved Project Budget Management",
-      es: "Mejor gestión del presupuesto del proyecto",
+      de: "Budgettreue & Kostenkontrolle",
+      en: "Budget Integrity & Cost Control",
+      es: "Integridad Presupuestaria y Control",
     },
     description: {
-      de: "Häufige Budgetüberschreitungen und finanzielle Ineffizienzen.",
-      en: "Frequent budget overruns and financial inefficiencies.",
-      es: "Frecuentes sobrecostos e ineficiencias financieras.",
+      de: "Projekte überschreiten regelmäßig die geplanten Kosten.",
+      en: "Recurring issues with project costs exceeding planned limits.",
+      es: "Problemas recurrentes con costos de proyectos que exceden los límites.",
     },
     category: {
       de: "Prozesse & Steuerung",
@@ -106,14 +109,14 @@ export const outcomes: PMOOutcome[] = [
   {
     id: "O-06",
     name: {
-      de: "Stärkere Ausrichtung an strategischen Zielen",
-      en: "Greater alignment with strategic objectives",
-      es: "Mayor alineación con los objetivos estratégicos",
+      de: "Strategischer Fit der Projekte",
+      en: "Strategic Project Alignment",
+      es: "Alineación Estratégica de Proyectos",
     },
     description: {
-      de: "Projekte tragen nicht zu den Unternehmenszielen bei.",
-      en: "Projects not contributing to organizational goals.",
-      es: "Los proyectos no contribuyen a los objetivos organizacionales.",
+      de: "Laufende Projekte zahlen nicht auf die Unternehmensziele ein.",
+      en: "Current initiatives do not contribute effectively to organizational goals.",
+      es: "Las iniciativas actuales no contribuyen eficazmente a los objetivos organizacionales.",
     },
     category: {
       de: "Strategie & Ausrichtung",
