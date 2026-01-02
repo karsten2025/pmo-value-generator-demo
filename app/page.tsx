@@ -14,19 +14,19 @@ export default function Home() {
   // UI-Texte (Headlines) auch übersetzen
   const uiTexts = {
     de: {
-      title: "PMO Value Generator 🚀",
+      title: "PMO Value Generator ⚡",
       sub: "Wählen Sie Ihr aktuelles Problem, um die Lösung zu finden.",
-      rec: "💊 Empfohlene Services:",
+      rec: "🛠️ Empfohlene Services:",
     },
     en: {
-      title: "PMO Value Generator 🚀",
+      title: "PMO Value Generator ⚡",
       sub: "Select your current pain point to find the matching solution.",
-      rec: "💊 Recommended Services:",
+      rec: "🛠️ Recommended Services:",
     },
     es: {
-      title: "Generador de Valor PMO 🚀",
+      title: "Generador de Valor PMO ⚡",
       sub: "Seleccione su problema actual para encontrar la solución.",
-      rec: "💊 Servicios recomendados:",
+      rec: "🛠️ Servicios recomendados:",
     },
   };
 
