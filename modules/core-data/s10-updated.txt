@@ -1,0 +1,74 @@
+      // ===== INITIATING =====
+      {
+        phase: "Initiating",
+        phaseLabel: {
+          de: { simple: "Start", pro: "Initiating (PMBOK)" },
+          en: { simple: "Start", pro: "Initiating (PMBOK)" },
+          es: { simple: "Inicio", pro: "Initiating (PMBOK)" },
+        },
+        steps: [
+          {
+            id: "S10-INIT-Team",
+            title: {
+              de: { 
+                simple: "Wer macht was?", 
+                pro: "Team Formation & Role Definition (PMBOK)" 
+              },
+              en: { 
+                simple: "Who does what?", 
+                pro: "Team Formation & Role Definition (PMBOK)" 
+              },
+              es: { 
+                simple: "¿Quién hace qué?", 
+                pro: "Formación de Equipo & Definición de Roles (PMBOK)" 
+              },
+            },
+            description: {
+              de: { 
+                simple: "Festlegen, welche Leute wir brauchen und was sie tun sollen.", 
+                pro: "Identifikation benötigter Rollen und Skills gemäß PMBOK Resource Management." 
+              },
+              en: { 
+                simple: "Define which people we need and what they should do.", 
+                pro: "Identify required roles and skills per PMBOK Resource Management." 
+              },
+              es: { 
+                simple: "Definir qué personas necesitamos y qué deben hacer.", 
+                pro: "Identificar roles y habilidades necesarias según PMBOK Resource Management." 
+              },
+            },
+          },
+          {
+            id: "S10-INIT-Skills",
+            title: {
+              de: { 
+                simple: "Was können wir schon?", 
+                pro: "Skills Gap Assessment (PMBOK)" 
+              },
+              en: { 
+                simple: "What can we already do?", 
+                pro: "Skills Gap Assessment (PMBOK)" 
+              },
+              es: { 
+                simple: "¿Qué podemos hacer ya?", 
+                pro: "Evaluación de Brechas de Habilidades (PMBOK)" 
+              },
+            },
+            description: {
+              de: { 
+                simple: "Prüfen: Was können unsere Leute? Was fehlt noch?", 
+                pro: "Analyse vorhandener vs. benötigter Kompetenzen gemäß PMBOK Resource Management." 
+              },
+              en: { 
+                simple: "Check: What can our people do? What's still missing?", 
+                pro: "Analyze existing vs. required competencies per PMBOK Resource Management." 
+              },
+              es: { 
+                simple: "Verificar: ¿Qué puede hacer nuestra gente? ¿Qué falta aún?", 
+                pro: "Analizar competencias existentes vs. necesarias según PMBOK Resource Management." 
+              },
+            },
+          },
+        ],
+      },
+

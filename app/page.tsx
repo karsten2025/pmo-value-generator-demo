@@ -9,9 +9,33 @@ import HybridTailoringGenerator from "@/components/HybridTailoringGenerator";
 import DashboardView from "@/components/DashboardView";
 import OnboardingTour from "@/components/OnboardingTour";
 import ProcessGroupNavigator from "@/components/ProcessGroupNavigator";
+import type { MatrixText, LocalizedString } from "@/modules/core-data/types";
 
 type Language = "de" | "en" | "es";
 type ViewMode = "generator" | "dashboard";
+
+// Helper function to get text based on view mode
+function getText(
+  text: MatrixText | LocalizedString | string,
+  lang: Language,
+  isManagementView: boolean
+): string {
+  if (typeof text === "string") return text;
+  
+  // Check if it's MatrixText (has simple/pro structure)
+  if (typeof text === "object" && text[lang]) {
+    const langValue = text[lang];
+    if (typeof langValue === "object" && "simple" in langValue && "pro" in langValue) {
+      // MatrixText format - use simple/pro based on view mode
+      return isManagementView ? langValue.pro : langValue.simple;
+    }
+    // Fallback: LocalizedString format (just a string per language)
+    // For old format, we show the same text in both views
+    return String(langValue);
+  }
+  
+  return String(text);
+}
 
 export default function Home() {
   const [lang, setLang] = useState<Language>("de");
@@ -20,11 +44,27 @@ export default function Home() {
   const [isManagementView, setIsManagementView] = useState(false);
   const [activeStepId, setActiveStepId] = useState<string | null>(null);
   const [showProcessGroups, setShowProcessGroups] = useState(false);
+  
+  // NEW: Per-service toggle state (service.id => boolean)
+  const [serviceViewModes, setServiceViewModes] = useState<Record<string, boolean>>({});
 
   const { selectedOutcomeIds, toggleOutcome } = useStore();
 
   const handleStepClick = (stepId: string) => {
     setActiveStepId((prev) => (prev === stepId ? null : stepId));
+  };
+  
+  // NEW: Toggle view mode for a specific service
+  const toggleServiceView = (serviceId: string) => {
+    setServiceViewModes((prev) => ({
+      ...prev,
+      [serviceId]: !prev[serviceId],
+    }));
+  };
+  
+  // Helper to get view mode for a service (defaults to false/team-view)
+  const getServiceViewMode = (serviceId: string): boolean => {
+    return serviceViewModes[serviceId] || false;
   };
 
   const uiTexts = {
@@ -223,17 +263,17 @@ export default function Home() {
                         : "bg-slate-900 text-slate-500 border border-slate-700"
                     }`}
                   >
-                    {outcome.category[lang]}
+                    {getText(outcome.category, lang, isManagementView)}
                   </span>
                   <h2
                     className={`text-xl font-bold mt-2 ${
                       isSelected ? "text-blue-200" : "text-slate-200"
                     }`}
                   >
-                    {outcome.name[lang]}
+                    {getText(outcome.name, lang, isManagementView)}
                   </h2>
                   <p className="text-slate-400 text-sm mt-2 leading-relaxed">
-                    {outcome.description[lang]}
+                    {getText(outcome.description, lang, isManagementView)}
                   </p>
                 </div>
                 <div
@@ -262,7 +302,7 @@ export default function Home() {
                               isSelected ? "text-blue-100" : "text-slate-400"
                             }`}
                           >
-                            {service.name[lang]}
+                            {getText(service.name, lang, isManagementView)}
                           </span>
                         </div>
                         {isSelected && (
@@ -275,7 +315,7 @@ export default function Home() {
                                 </strong>
                                 <ul className="list-disc list-inside text-slate-400 space-y-0.5 ml-1">
                                   {service.deliverables.map((del, idx) => (
-                                    <li key={idx}>{del[lang]}</li>
+                                    <li key={idx}>{getText(del, lang, isManagementView)}</li>
                                   ))}
                                 </ul>
                               </div>
@@ -285,7 +325,7 @@ export default function Home() {
                                 </strong>
                                 <ul className="list-disc list-inside text-slate-300 space-y-0.5 ml-1">
                                   {service.kpis.map((kpi, idx) => (
-                                    <li key={idx}>{kpi[lang]}</li>
+                                    <li key={idx}>{getText(kpi, lang, isManagementView)}</li>
                                   ))}
                                 </ul>
                               </div>
@@ -421,25 +461,58 @@ export default function Home() {
                         : "bg-slate-900 border-slate-800"
                     }`}
                   >
-                    <div>
-                      <h3
-                        className={`text-lg font-bold ${
-                          isManagementView
-                            ? "text-blue-300"
-                            : "text-emerald-300"
+                    <div className="flex items-center gap-3">
+                      <div>
+                        <h3
+                          className={`text-lg font-bold ${
+                            getServiceViewMode(service.id)
+                              ? "text-blue-300"
+                              : "text-emerald-300"
+                          }`}
+                        >
+                          {idx + 1}.{" "}
+                          {getServiceViewMode(service.id) && service.businessName
+                            ? getText(service.businessName, lang, true)
+                            : getText(service.name, lang, getServiceViewMode(service.id))}
+                        </h3>
+                        {getServiceViewMode(service.id) && (
+                          <span className="text-[10px] bg-blue-600 text-white px-2 py-0.5 rounded ml-2 uppercase tracking-widest">
+                            OPM Standard
+                          </span>
+                        )}
+                      </div>
+                      
+                      {/* NEW: Per-Service Toggle */}
+                      <label
+                        className="relative inline-flex items-center cursor-pointer ml-4"
+                        title={getServiceViewMode(service.id) ? "Management-View" : "Team-View"}
+                      >
+                        <input
+                          type="checkbox"
+                          className="sr-only"
+                          checked={getServiceViewMode(service.id)}
+                          onChange={() => toggleServiceView(service.id)}
+                        />
+                        <div
+                          className={`block w-10 h-6 rounded-full transition-colors ${
+                            getServiceViewMode(service.id) ? "bg-blue-600" : "bg-emerald-600"
+                          }`}
+                        ></div>
+                        <div
+                          className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform ${
+                            getServiceViewMode(service.id) ? "transform translate-x-4" : ""
+                          }`}
+                        ></div>
+                      </label>
+                      <span
+                        className={`text-[9px] font-bold uppercase tracking-wider ${
+                          getServiceViewMode(service.id) ? "text-blue-400" : "text-emerald-400"
                         }`}
                       >
-                        {idx + 1}.{" "}
-                        {isManagementView && service.businessName
-                          ? service.businessName[lang]
-                          : service.name[lang]}
-                      </h3>
-                      {isManagementView && (
-                        <span className="text-[10px] bg-blue-600 text-white px-2 py-0.5 rounded ml-2 uppercase tracking-widest">
-                          OPM Standard
-                        </span>
-                      )}
+                        {getServiceViewMode(service.id) ? "Mgmt" : "Team"}
+                      </span>
                     </div>
+                    
                     <span className="text-xs text-slate-500 uppercase tracking-wider border border-slate-700 px-2 py-1 rounded">
                       {service.category}
                     </span>
@@ -447,7 +520,7 @@ export default function Home() {
                   <div className="p-5 grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="text-xs uppercase font-bold text-slate-500 mb-3 tracking-wider">
-                        {isManagementView
+                        {getServiceViewMode(service.id)
                           ? "Methodology & Output"
                           : "Ergebnisse & Nutzen"}
                       </h4>
@@ -458,31 +531,31 @@ export default function Home() {
                             className="text-sm text-slate-300 flex items-start gap-2"
                           >
                             <span className="text-slate-600 mt-1">▪</span>{" "}
-                            {del[lang]}
+                            {getText(del, lang, getServiceViewMode(service.id))}
                           </li>
                         ))}
                       </ul>
                     </div>
                     <div
                       className={`p-4 rounded-lg ${
-                        isManagementView
+                        getServiceViewMode(service.id)
                           ? "bg-blue-500/10 border border-blue-500/20"
                           : "bg-emerald-500/5 border border-emerald-500/10"
                       }`}
                     >
                       <h4
                         className={`text-xs uppercase font-bold mb-3 tracking-wider ${
-                          isManagementView
+                          getServiceViewMode(service.id)
                             ? "text-blue-400"
                             : "text-emerald-400"
                         }`}
                       >
-                        {isManagementView
+                        {getServiceViewMode(service.id)
                           ? "📈 ROI & KPI (Business Case)"
                           : "❤️ Vital-Werte (Team)"}
                       </h4>
                       <ul className="space-y-2 mb-4">
-                        {(isManagementView && service.hardKpis
+                        {(getServiceViewMode(service.id) && service.hardKpis
                           ? service.hardKpis
                           : service.kpis
                         ).map((kpi, i) => (
@@ -492,20 +565,20 @@ export default function Home() {
                           >
                             <span
                               className={
-                                isManagementView
+                                getServiceViewMode(service.id)
                                   ? "text-blue-500"
                                   : "text-emerald-500"
                               }
                             >
-                              {isManagementView ? "⇗" : "♥"}
+                              {getServiceViewMode(service.id) ? "⇗" : "♥"}
                             </span>{" "}
-                            {kpi[lang]}
+                            {getText(kpi, lang, getServiceViewMode(service.id))}
                           </li>
                         ))}
                       </ul>
-                      {isManagementView && service.roiImpact && (
+                      {getServiceViewMode(service.id) && service.roiImpact && (
                         <div className="mt-4 pt-3 border-t border-blue-500/30 text-xs text-blue-200 italic">
-                          "{service.roiImpact[lang]}"
+                          "{getText(service.roiImpact, lang, true)}"
                         </div>
                       )}
                     </div>
@@ -522,38 +595,49 @@ export default function Home() {
                         </span>
                       </div>
                       <div className="grid grid-cols-5 gap-3 p-3">
-                        {service.implementationPlan.map((phase, pIdx) => (
-                          <div
-                            key={pIdx}
-                            className="flex flex-col gap-2"
-                          >
+                        {service.implementationPlan.map((phase, pIdx) => {
+                          // Helper to get phase label
+                          const getPhaseLabel = (phaseName: string) => {
+                            if (phase.phaseLabel) {
+                              return getText(phase.phaseLabel, lang, getServiceViewMode(service.id));
+                            }
+                            // Fallback if phaseLabel doesn't exist yet
+                            return phaseName;
+                          };
+
+                          return (
                             <div
-                              className={`text-[9px] font-bold uppercase pb-1 border-b border-slate-700 text-center ${
-                                pIdx === 0
-                                  ? "text-emerald-400"
-                                  : "text-slate-500"
-                              }`}
+                              key={pIdx}
+                              className="flex flex-col gap-2"
                             >
-                              {phase.phase}
+                              <div
+                                className={`text-[9px] font-bold uppercase pb-1 border-b border-slate-700 text-center ${
+                                  pIdx === 0
+                                    ? "text-emerald-400"
+                                    : "text-slate-500"
+                                }`}
+                              >
+                                {getPhaseLabel(phase.phase)}
+                              </div>
+                              {phase.steps.map((step, sIdx) => {
+                                const isActive = activeStepId === step.id;
+                                return (
+                                  <div
+                                    key={sIdx}
+                                    onClick={() => handleStepClick(step.id)}
+                                    className={`text-[10px] p-2.5 rounded border cursor-pointer transition-all relative h-16 flex items-center justify-center text-center leading-tight ${
+                                      isActive
+                                        ? "bg-blue-600 text-white border-blue-500 shadow-md"
+                                        : "bg-slate-800 text-slate-300 border-slate-700 hover:border-blue-500 hover:text-white"
+                                    }`}
+                                  >
+                                    {getText(step.title, lang, getServiceViewMode(service.id))}
+                                  </div>
+                                );
+                              })}
                             </div>
-                            {phase.steps.map((step, sIdx) => {
-                              const isActive = activeStepId === step.id;
-                              return (
-                                <div
-                                  key={sIdx}
-                                  onClick={() => handleStepClick(step.id)}
-                                  className={`text-[10px] p-2.5 rounded border cursor-pointer transition-all relative h-16 flex items-center justify-center text-center leading-tight ${
-                                    isActive
-                                      ? "bg-blue-600 text-white border-blue-500 shadow-md"
-                                      : "bg-slate-800 text-slate-300 border-slate-700 hover:border-blue-500 hover:text-white"
-                                  }`}
-                                >
-                                  {step.title[lang]}
-                                </div>
-                              );
-                            })}
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                       <div id="modal-metrics-area">
                         {activeStepId &&

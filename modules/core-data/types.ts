@@ -21,29 +21,37 @@ export interface MaturityLevel {
 // NEU: Definition eines einzelnen Prozess-Schritts
 export interface ProcessStep {
   id: string;
-  title: LocalizedString;
-  description: LocalizedString; // Was genau ist zu tun?
+  title: MatrixText | LocalizedString; // HYBRID: Team vs. Management View OR old format
+  description: MatrixText | LocalizedString; // Was genau ist zu tun?
+}
+
+// NEU: Phase Names with dual view
+export interface PhaseLabel {
+  de: { simple: string; pro: string; };
+  en: { simple: string; pro: string; };
+  es: { simple: string; pro: string; };
 }
 
 // NEU: Die Prozess-Gruppe (Der Container)
 export interface ProcessGroup {
   phase: "Initiating" | "Planning" | "Executing" | "Monitoring" | "Closing";
+  phaseLabel?: PhaseLabel; // OPTIONAL: Team vs. Management labels (for backward compat)
   steps: ProcessStep[];
 }
 
 export interface PMOService {
   id: string;
 
-  // Frontend / Soft
-  name: LocalizedString;
-  description: LocalizedString;
-  deliverables: LocalizedString[];
-  kpis: LocalizedString[];
+  // Frontend / Soft (Team-View) - HYBRID format
+  name: MatrixText | LocalizedString; // simple = Team, pro = Management OR old format
+  description: MatrixText | LocalizedString;
+  deliverables: (MatrixText | LocalizedString)[];
+  kpis: (MatrixText | LocalizedString)[];
 
-  // Backend / Hard
-  businessName?: LocalizedString;
-  hardKpis?: LocalizedString[];
-  roiImpact?: LocalizedString;
+  // Backend / Hard (Management-View) - HYBRID format
+  businessName?: MatrixText | LocalizedString;
+  hardKpis?: (MatrixText | LocalizedString)[];
+  roiImpact?: MatrixText | LocalizedString;
 
   // NEU: Der konkrete Fahrplan (Prozess-Kollektion)
   implementationPlan: ProcessGroup[];
@@ -54,8 +62,8 @@ export interface PMOService {
 
 export interface PMOOutcome {
   id: string;
-  name: LocalizedString;
-  description: LocalizedString;
-  category: LocalizedString;
+  name: MatrixText | LocalizedString; // simple = Team, pro = Management OR old format
+  description: MatrixText | LocalizedString;
+  category: MatrixText | LocalizedString;
   recommendedServiceIds: string[];
 }
