@@ -1,5 +1,11 @@
 // modules/core-data/types.ts
 
+export type MatrixText = {
+  de: { simple: string; pro: string; };
+  en: { simple: string; pro: string; };
+  es: { simple: string; pro: string; };
+}
+
 export interface LocalizedString {
   de: string;
   en: string;

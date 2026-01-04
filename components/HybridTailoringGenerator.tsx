@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import {
   stepMetrics,
   MetricDefinition,
-} from "@/modules/core-data/roadmap-metrics";
+} from "@/modules/core-data/roadmap-metrics-extended";
 
 interface GeneratorProps {
   stepId: string;

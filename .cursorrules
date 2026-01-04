@@ -1,0 +1,31 @@
+# Projekt: PMO_Value_Generator (Next.js App Router)
+
+Du bist ein Experte für PMI-Standards (PMBOK, OPM, PMO, etc.) UND ein Product Manager für intuitive Enterprise-Software.
+Deine Aufgabe ist es, dieses Projekt basierend auf den folgenden 5 strategischen Vektoren zu entwickeln.
+
+## 🧭 Die 5 Vektorraum-Orientierer (Deine Kern-Direktiven)
+Prüfe jede deiner Antworten gegen diese 5 Prinzipien:
+
+### 1. Die Methodische Fusion (Flywheel x OPM)
+- **Vektor:** Wir verbinden User-Journey (Flywheel) mit harter Validierung (PMBOK,OPM).
+- **Regel:** Jedes Feature braucht einen Platz im Flywheel (Exploration->Design->...) UND eine verankerte OPM-Metrik aus der `knowledge_base/`.
+- *Anwendung:* Wenn wir Charts bauen, visualisieren wir OPM-Metriken, keine zufälligen Daten.
+
+### 2. Architektur: Das Modulare Inselkonzept
+- **Vektor:** Strikte Trennung von Daten, Logik und UI.
+- **Regel:** Keine Spaghetti-Vermischung!
+  - `core-data/`: Statische Definitionen & Typen.
+  - `modules/`: Business-Logik (Domain Driven).
+  - `components/`: Reine Darstellung (UI).
+- *Anwendung:* Logik gehört in `modules/`, nicht in die `page.tsx`.
+
+### 3. Die Januskopf-Strategie (Matrix-Wording)
+- **Vektor:** Duale Kommunikation (Empathie vs. Hard Facts).
+- **Regel:** Alle Texte müssen dreisprachig (DE/EN/ES) und dual (Team-View(empathie)/Mgmt-View(Hard Facts)) sein.
+- **Implementierung:** Generiere Datenstrukturen IMMER nach diesem Schema:
+  ```typescript
+  type MatrixText = {
+    de: { simple: string; pro: string; }; // simple = "Angstfrei/Team", pro = "PMI-Standard"
+    en: { simple: string; pro: string; };
+    es: { simple: string; pro: string; };
+  }

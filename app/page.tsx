@@ -8,6 +8,7 @@ import { stepMetrics } from "@/modules/core-data/roadmap-metrics"; // Korrigiert
 import HybridTailoringGenerator from "@/components/HybridTailoringGenerator";
 import DashboardView from "@/components/DashboardView";
 import OnboardingTour from "@/components/OnboardingTour";
+import ProcessGroupNavigator from "@/components/ProcessGroupNavigator";
 
 type Language = "de" | "en" | "es";
 type ViewMode = "generator" | "dashboard";
@@ -18,6 +19,7 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [isManagementView, setIsManagementView] = useState(false);
   const [activeStepId, setActiveStepId] = useState<string | null>(null);
+  const [showProcessGroups, setShowProcessGroups] = useState(false);
 
   const { selectedOutcomeIds, toggleOutcome } = useStore();
 
@@ -336,7 +338,7 @@ export default function Home() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="bg-slate-900 border border-slate-700 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl animate-in zoom-in-95 duration-200 flex flex-col">
             <div className="p-6 border-b border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center bg-slate-900 sticky top-0 z-10 gap-4">
-              <div>
+              <div className="flex-1">
                 <h2 className="text-2xl font-bold text-white mb-1">
                   {uiTexts[lang].modalTitle}
                 </h2>
@@ -344,15 +346,66 @@ export default function Home() {
                   {uiTexts[lang].modalIntro}
                 </p>
               </div>
-              <button
-                onClick={() => setShowModal(false)}
-                className="text-slate-500 hover:text-white bg-slate-800 hover:bg-slate-700 p-2 rounded-full"
-              >
-                ✕
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => setShowProcessGroups(!showProcessGroups)}
+                  className={`px-4 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 ${
+                    showProcessGroups
+                      ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg"
+                      : "bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700"
+                  }`}
+                >
+                  <span className="text-lg">🔄</span>
+                  <span>
+                    {lang === "de"
+                      ? "Prozessgruppen"
+                      : lang === "en"
+                      ? "Process Groups"
+                      : "Grupos de Procesos"}
+                  </span>
+                </button>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="text-slate-500 hover:text-white bg-slate-800 hover:bg-slate-700 p-2 rounded-full"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
             <div className="p-6 space-y-6 flex-grow">
-              {activeServices.map((service, idx) => (
+              {showProcessGroups ? (
+                /* NEW: Process Groups View */
+                <div className="animate-in fade-in slide-in-from-top-4 duration-300">
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                      <span>📊</span>
+                      {lang === "de"
+                        ? "PMBOK Process Groups"
+                        : lang === "en"
+                        ? "PMBOK Process Groups"
+                        : "Grupos de Procesos PMBOK"}
+                    </h3>
+                    <p className="text-slate-400 text-sm">
+                      {lang === "de"
+                        ? "Wählen Sie relevante Metriken für jede Phase Ihres Projekts."
+                        : lang === "en"
+                        ? "Select relevant metrics for each phase of your project."
+                        : "Seleccione métricas relevantes para cada fase de su proyecto."}
+                    </p>
+                  </div>
+                  {activeServices.map((service) => (
+                    <ProcessGroupNavigator
+                      key={service.id}
+                      serviceId={service.id}
+                      lang={lang}
+                      isManagementView={isManagementView}
+                    />
+                  ))}
+                </div>
+              ) : (
+                /* ORIGINAL: Service Cards View */
+                <>
+                  {activeServices.map((service, idx) => (
                 <div
                   key={idx}
                   className={`rounded-xl border overflow-hidden transition-all duration-500 ${
@@ -468,14 +521,14 @@ export default function Home() {
                           {uiTexts[lang].stepHint}
                         </span>
                       </div>
-                      <div className="flex gap-2 overflow-x-auto p-3 scrollbar-thin scrollbar-thumb-slate-700">
+                      <div className="grid grid-cols-5 gap-3 p-3">
                         {service.implementationPlan.map((phase, pIdx) => (
                           <div
                             key={pIdx}
-                            className="flex-none w-40 flex flex-col gap-2"
+                            className="flex flex-col gap-2"
                           >
                             <div
-                              className={`text-[9px] font-bold uppercase pb-1 border-b border-slate-700 ${
+                              className={`text-[9px] font-bold uppercase pb-1 border-b border-slate-700 text-center ${
                                 pIdx === 0
                                   ? "text-emerald-400"
                                   : "text-slate-500"
@@ -489,7 +542,7 @@ export default function Home() {
                                 <div
                                   key={sIdx}
                                   onClick={() => handleStepClick(step.id)}
-                                  className={`text-[10px] p-2 rounded border cursor-pointer transition-all relative ${
+                                  className={`text-[10px] p-2.5 rounded border cursor-pointer transition-all relative h-16 flex items-center justify-center text-center leading-tight ${
                                     isActive
                                       ? "bg-blue-600 text-white border-blue-500 shadow-md"
                                       : "bg-slate-800 text-slate-300 border-slate-700 hover:border-blue-500 hover:text-white"
@@ -517,6 +570,8 @@ export default function Home() {
                   </div>
                 </div>
               ))}
+                </>
+              )}
             </div>
             <div className="p-6 border-t border-slate-800 bg-slate-900 sticky bottom-0 flex justify-between items-center">
               <div className="text-xs text-slate-500">
