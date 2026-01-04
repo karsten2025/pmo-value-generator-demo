@@ -335,11 +335,11 @@ export default function ProcessGroupNavigator({
                     {metric.inputType === "currency"
                       ? "💰"
                       : metric.inputType.includes("rating")
-                      ? "⭐"
+                      ? metric.inputType === "rating_traffic_light"
+                        ? "🚦"
+                        : "⭐"
                       : metric.inputType === "date"
                       ? "📅"
-                      : metric.inputType === "traffic_light"
-                      ? "🚦"
                       : "📝"}
                   </span>
                 </div>
