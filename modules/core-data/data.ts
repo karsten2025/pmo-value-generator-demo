@@ -383,9 +383,9 @@ export const services: PMOService[] = [
       {
         phase: "Monitoring",
         phaseLabel: {
-          de: { simple: "Kontrolle", pro: "Monitoring & Controlling (PMBOK)" },
-          en: { simple: "Control", pro: "Monitoring & Controlling (PMBOK)" },
-          es: { simple: "Control", pro: "Monitoring & Controlling (PMBOK)" },
+          de: { simple: "Kontrolle", pro: "Monitoring (PMBOK)" },
+          en: { simple: "Control", pro: "Monitoring (PMBOK)" },
+          es: { simple: "Control", pro: "Monitoring (PMBOK)" },
         },
         steps: [
           {
@@ -534,60 +534,150 @@ export const services: PMOService[] = [
   {
     id: "S-10",
     name: {
-      de: "Team-Balance & Planung",
-      en: "Team Balance & Planning",
-      es: "Balance y Planificación de Equipo",
+      de: { 
+        simple: "Team-Balance & Planung", 
+        pro: "Resource & Capacity Management (OPM)" 
+      },
+      en: { 
+        simple: "Team Balance & Planning", 
+        pro: "Resource & Capacity Management (OPM)" 
+      },
+      es: { 
+        simple: "Balance y Planificación de Equipo", 
+        pro: "Gestión de Recursos y Capacidad (OPM)" 
+      },
     },
     description: {
-      de: "Sicherstellen, dass genügend passende Leute verfügbar sind.",
-      en: "Ensuring enough suitable people are available.",
-      es: "Asegurar disponibilidad de personas adecuadas.",
+      de: { 
+        simple: "Sicherstellen, dass genügend passende Leute verfügbar sind.", 
+        pro: "Optimierung von Ressourcenallokation und Kapazitätsplanung gemäß OPM Resource Management Enablers." 
+      },
+      en: { 
+        simple: "Ensure enough suitable people are available.", 
+        pro: "Optimize resource allocation and capacity planning per OPM Resource Management Enablers." 
+      },
+      es: { 
+        simple: "Asegurar disponibilidad de personas adecuadas.", 
+        pro: "Optimizar asignación de recursos según OPM Resource Management Enablers." 
+      },
     },
     deliverables: [
       {
-        de: "Ressourcenplan mit Verfügbarkeitsübersicht",
-        en: "Resource Plan with Availability Overview",
-        es: "Plan de recursos con disponibilidad",
+        de: { 
+          simple: "Plan: Wer arbeitet wann?", 
+          pro: "Resource Plan & Availability Matrix (PMBOK)" 
+        },
+        en: { 
+          simple: "Plan: Who works when?", 
+          pro: "Resource Plan & Availability Matrix (PMBOK)" 
+        },
+        es: { 
+          simple: "Plan: ¿Quién trabaja cuándo?", 
+          pro: "Plan de Recursos (PMBOK)" 
+        },
       },
       {
-        de: "Skill-Matrix und Gap-Analyse",
-        en: "Skill Matrix and Gap Analysis",
-        es: "Matriz de habilidades",
+        de: { 
+          simple: "Was können unsere Leute?", 
+          pro: "Skill Matrix & Gap Analysis Report (PMBOK)" 
+        },
+        en: { 
+          simple: "What can our people do?", 
+          pro: "Skill Matrix & Gap Analysis Report (PMBOK)" 
+        },
+        es: { 
+          simple: "¿Qué puede hacer nuestra gente?", 
+          pro: "Matriz de Habilidades (PMBOK)" 
+        },
       },
     ],
     kpis: [
       {
-        de: "Auslastungsgrad gesund (70-85%)",
-        en: "Healthy Utilization (70-85%)",
-        es: "Utilización saludable",
+        de: { 
+          simple: "Sind alle gut ausgelastet? (nicht zu viel, nicht zu wenig)", 
+          pro: "Resource Utilization Rate 70-85% (OPM)" 
+        },
+        en: { 
+          simple: "Is everyone well utilized? (not too much, not too little)", 
+          pro: "Resource Utilization Rate 70-85% (OPM)" 
+        },
+        es: { 
+          simple: "¿Todos están bien utilizados?", 
+          pro: "Tasa de Utilización 70-85% (OPM)" 
+        },
       },
       {
-        de: "Skill-Abdeckung pro Projekt",
-        en: "Skill Coverage per Project",
-        es: "Cobertura de habilidades",
+        de: { 
+          simple: "Haben wir die richtigen Leute für jedes Projekt?", 
+          pro: "Skill Coverage & Match Rate per Project (PMBOK)" 
+        },
+        en: { 
+          simple: "Do we have the right people for each project?", 
+          pro: "Skill Coverage & Match Rate per Project (PMBOK)" 
+        },
+        es: { 
+          simple: "¿Tenemos las personas adecuadas para cada proyecto?", 
+          pro: "Cobertura de Habilidades (PMBOK)" 
+        },
       },
     ],
     businessName: {
-      de: "Resource & Capacity Management (OPM Enablers)",
-      en: "Resource & Capacity Management",
-      es: "Gestión de Recursos",
+      de: { 
+        simple: "Team-Balance & Planung", 
+        pro: "Resource & Capacity Management (OPM Enablers)" 
+      },
+      en: { 
+        simple: "Team Balance & Planning", 
+        pro: "Resource & Capacity Management (OPM Enablers)" 
+      },
+      es: { 
+        simple: "Balance de Equipo", 
+        pro: "Gestión de Recursos (OPM Enablers)" 
+      },
     },
     hardKpis: [
       {
-        de: "Ressourcen-Auslastung 80% ± 5%",
-        en: "Resource Utilization 80% ± 5%",
-        es: "Utilización de recursos 80%",
+        de: { 
+          simple: "Auslastung bei 80% (± 5%)", 
+          pro: "Resource Utilization 80% ± 5% (KPI)" 
+        },
+        en: { 
+          simple: "Utilization at 80% (± 5%)", 
+          pro: "Resource Utilization 80% ± 5% (KPI)" 
+        },
+        es: { 
+          simple: "Utilización al 80% (± 5%)", 
+          pro: "Utilización de Recursos 80% ± 5% (KPI)" 
+        },
       },
       {
-        de: "Skill Gap < 15%",
-        en: "Skill Gap < 15%",
-        es: "Brecha de habilidades < 15%",
+        de: { 
+          simple: "Weniger als 15% fehlende Skills", 
+          pro: "Skill Gap < 15% (Performance Metric)" 
+        },
+        en: { 
+          simple: "Less than 15% missing skills", 
+          pro: "Skill Gap < 15% (Performance Metric)" 
+        },
+        es: { 
+          simple: "Menos del 15% de habilidades faltantes", 
+          pro: "Brecha de Habilidades < 15% (Métrica)" 
+        },
       },
     ],
     roiImpact: {
-      de: "Vermeidung von Über-/Unterauslastung spart Kosten und steigert Mitarbeiterzufriedenheit.",
-      en: "Avoiding over/underutilization saves costs and increases employee satisfaction.",
-      es: "Evitar sobre/subutilización ahorra costos.",
+      de: { 
+        simple: "Glückliche Leute bleiben länger und arbeiten besser.", 
+        pro: "Optimierte Ressourcenplanung reduziert Burnout-Rate um 40% und erhöht Team-Retention (OPM Benefits)." 
+      },
+      en: { 
+        simple: "Happy people stay longer and work better.", 
+        pro: "Optimized resource planning reduces burnout rate by 40% and increases team retention (OPM Benefits)." 
+      },
+      es: { 
+        simple: "La gente feliz se queda más tiempo y trabaja mejor.", 
+        pro: "Planificación optimizada reduce burnout 40% y aumenta retención (OPM Benefits)." 
+      },
     },
     category: "Operational",
     maturityLevels: [],
@@ -816,9 +906,9 @@ export const services: PMOService[] = [
       {
         phase: "Monitoring",
         phaseLabel: {
-          de: { simple: "Kontrolle", pro: "Monitoring & Controlling (PMBOK)" },
-          en: { simple: "Control", pro: "Monitoring & Controlling (PMBOK)" },
-          es: { simple: "Control", pro: "Monitoring & Controlling (PMBOK)" },
+          de: { simple: "Kontrolle", pro: "Monitoring (PMBOK)" },
+          en: { simple: "Control", pro: "Monitoring (PMBOK)" },
+          es: { simple: "Control", pro: "Monitoring (PMBOK)" },
         },
         steps: [
           {
@@ -967,60 +1057,150 @@ export const services: PMOService[] = [
   {
     id: "S-14",
     name: {
-      de: "Änderungsbegleitung",
-      en: "Change Facilitation",
-      es: "Facilitación de Cambios",
+      de: { 
+        simple: "Änderungsbegleitung", 
+        pro: "Change Control & Governance (PMBOK)" 
+      },
+      en: { 
+        simple: "Change Facilitation", 
+        pro: "Change Control & Governance (PMBOK)" 
+      },
+      es: { 
+        simple: "Facilitación de Cambios", 
+        pro: "Control de Cambios y Gobernanza (PMBOK)" 
+      },
     },
     description: {
-      de: "Schnelle und klare Entscheidungen zu Änderungen ermöglichen.",
-      en: "Enable fast and clear decisions on changes.",
-      es: "Permitir decisiones rápidas sobre cambios.",
+      de: { 
+        simple: "Schnelle und klare Entscheidungen zu Änderungen ermöglichen.", 
+        pro: "Implementierung eines strukturierten Change Control Board gemäß PMBOK Integrated Change Control." 
+      },
+      en: { 
+        simple: "Enable fast and clear decisions on changes.", 
+        pro: "Implement structured Change Control Board per PMBOK Integrated Change Control." 
+      },
+      es: { 
+        simple: "Permitir decisiones rápidas sobre cambios.", 
+        pro: "Implementar Junta de Control según PMBOK Integrated Change Control." 
+      },
     },
     deliverables: [
       {
-        de: "Change Control Board Setup",
-        en: "Change Control Board Setup",
-        es: "Configuración de Junta de Control",
+        de: { 
+          simple: "Entscheider-Gruppe einrichten", 
+          pro: "Change Control Board Setup & Governance Model (PMBOK)" 
+        },
+        en: { 
+          simple: "Set up decision group", 
+          pro: "Change Control Board Setup & Governance Model (PMBOK)" 
+        },
+        es: { 
+          simple: "Establecer grupo de decisión", 
+          pro: "Configuración de Junta de Control (PMBOK)" 
+        },
       },
       {
-        de: "Entscheidungsprozess dokumentiert",
-        en: "Decision Process Documented",
-        es: "Proceso de decisión documentado",
+        de: { 
+          simple: "Wie läuft eine Änderung ab?", 
+          pro: "Change Decision Process & SOP Documentation (PMBOK)" 
+        },
+        en: { 
+          simple: "How does a change work?", 
+          pro: "Change Decision Process & SOP Documentation (PMBOK)" 
+        },
+        es: { 
+          simple: "¿Cómo funciona un cambio?", 
+          pro: "Proceso de Decisión Documentado (PMBOK)" 
+        },
       },
     ],
     kpis: [
       {
-        de: "Entscheidungslatenz (Zeit bis Approval)",
-        en: "Decision Latency (Time to Approval)",
-        es: "Latencia de decisión",
+        de: { 
+          simple: "Wie lange dauern Entscheidungen?", 
+          pro: "Decision Latency - Time to Approval (PMBOK Performance)" 
+        },
+        en: { 
+          simple: "How long do decisions take?", 
+          pro: "Decision Latency - Time to Approval (PMBOK Performance)" 
+        },
+        es: { 
+          simple: "¿Cuánto tardan las decisiones?", 
+          pro: "Latencia de Decisión (PMBOK Performance)" 
+        },
       },
       {
-        de: "Approval-Rate (% genehmigte CRs)",
-        en: "Approval Rate (% approved CRs)",
-        es: "Tasa de aprobación",
+        de: { 
+          simple: "Werden gute Änderungen genehmigt?", 
+          pro: "Change Approval Rate & Success Ratio (PMBOK)" 
+        },
+        en: { 
+          simple: "Are good changes approved?", 
+          pro: "Change Approval Rate & Success Ratio (PMBOK)" 
+        },
+        es: { 
+          simple: "¿Se aprueban buenos cambios?", 
+          pro: "Tasa de Aprobación (PMBOK)" 
+        },
       },
     ],
     businessName: {
-      de: "Change Control & Governance (OPM Enablers)",
-      en: "Change Control & Governance",
-      es: "Control de Cambios y Gobernanza",
+      de: { 
+        simple: "Änderungsbegleitung", 
+        pro: "Change Control & Governance (OPM Enablers)" 
+      },
+      en: { 
+        simple: "Change Facilitation", 
+        pro: "Change Control & Governance (OPM Enablers)" 
+      },
+      es: { 
+        simple: "Facilitación de Cambios", 
+        pro: "Control de Cambios (OPM Enablers)" 
+      },
     },
     hardKpis: [
       {
-        de: "Decision Latency < 3 Tage",
-        en: "Decision Latency < 3 Days",
-        es: "Latencia < 3 días",
+        de: { 
+          simple: "Entscheidung in maximal 3 Tagen", 
+          pro: "Decision Latency < 3 Days (Performance KPI)" 
+        },
+        en: { 
+          simple: "Decision in max 3 days", 
+          pro: "Decision Latency < 3 Days (Performance KPI)" 
+        },
+        es: { 
+          simple: "Decisión en máximo 3 días", 
+          pro: "Latencia < 3 días (KPI)" 
+        },
       },
       {
-        de: "Change Success Rate > 85%",
-        en: "Change Success Rate > 85%",
-        es: "Tasa de éxito > 85%",
+        de: { 
+          simple: "85% der Änderungen erfolgreich", 
+          pro: "Change Success Rate > 85% (Quality Metric)" 
+        },
+        en: { 
+          simple: "85% of changes successful", 
+          pro: "Change Success Rate > 85% (Quality Metric)" 
+        },
+        es: { 
+          simple: "85% de cambios exitosos", 
+          pro: "Tasa de Éxito > 85% (Métrica)" 
+        },
       },
     ],
     roiImpact: {
-      de: "Schnellere Entscheidungen reduzieren Wartezeiten und erhöhen Agilität.",
-      en: "Faster decisions reduce wait times and increase agility.",
-      es: "Decisiones rápidas reducen tiempos de espera.",
+      de: { 
+        simple: "Schnelle Entscheidungen = weniger Wartezeit = zufriedenere Teams.", 
+        pro: "Reduzierte Decision Latency senkt Projekt-Blockadezeit um 60% und erhöht Team-Agilität (OPM Value)." 
+      },
+      en: { 
+        simple: "Fast decisions = less waiting = happier teams.", 
+        pro: "Reduced decision latency decreases project blocking time by 60% and increases team agility (OPM Value)." 
+      },
+      es: { 
+        simple: "Decisiones rápidas = menos espera = equipos más felices.", 
+        pro: "Latencia reducida disminuye tiempo de bloqueo 60% y aumenta agilidad (OPM Value)." 
+      },
     },
     category: "Tactical",
     maturityLevels: [],
@@ -1249,9 +1429,9 @@ export const services: PMOService[] = [
       {
         phase: "Monitoring",
         phaseLabel: {
-          de: { simple: "Kontrolle", pro: "Monitoring & Controlling (PMBOK)" },
-          en: { simple: "Control", pro: "Monitoring & Controlling (PMBOK)" },
-          es: { simple: "Control", pro: "Monitoring & Controlling (PMBOK)" },
+          de: { simple: "Kontrolle", pro: "Monitoring (PMBOK)" },
+          en: { simple: "Control", pro: "Monitoring (PMBOK)" },
+          es: { simple: "Control", pro: "Monitoring (PMBOK)" },
         },
         steps: [
           {
@@ -1400,60 +1580,150 @@ export const services: PMOService[] = [
   {
     id: "S-17",
     name: {
-      de: "Hindernis-Beseitigung",
-      en: "Obstacle Removal",
-      es: "Eliminación de Obstáculos",
+      de: { 
+        simple: "Hindernis-Beseitigung", 
+        pro: "Issue & Risk Management (PMBOK)" 
+      },
+      en: { 
+        simple: "Obstacle Removal", 
+        pro: "Issue & Risk Management (PMBOK)" 
+      },
+      es: { 
+        simple: "Eliminación de Obstáculos", 
+        pro: "Gestión de Problemas y Riesgos (PMBOK)" 
+      },
     },
     description: {
-      de: "Unterstützung bei der Lösung von Blockern und Eskalationen.",
-      en: "Support in solving blockers and escalations.",
-      es: "Apoyo en resolver bloqueos y escaladas.",
+      de: { 
+        simple: "Unterstützung bei der Lösung von Blockern und Eskalationen.", 
+        pro: "Proaktives Issue & Risk Management gemäß PMBOK Risk Management Knowledge Area." 
+      },
+      en: { 
+        simple: "Support in solving blockers and escalations.", 
+        pro: "Proactive Issue & Risk Management per PMBOK Risk Management Knowledge Area." 
+      },
+      es: { 
+        simple: "Apoyo en resolver bloqueos y escaladas.", 
+        pro: "Gestión proactiva según PMBOK Risk Management Knowledge Area." 
+      },
     },
     deliverables: [
       {
-        de: "Eskalationspfade klar definiert",
-        en: "Escalation Paths Clearly Defined",
-        es: "Rutas de escalada definidas",
+        de: { 
+          simple: "Wen frage ich bei Problemen?", 
+          pro: "Escalation Paths & Decision Authority Matrix (PMBOK)" 
+        },
+        en: { 
+          simple: "Who do I ask when there's a problem?", 
+          pro: "Escalation Paths & Decision Authority Matrix (PMBOK)" 
+        },
+        es: { 
+          simple: "¿A quién pregunto si hay problemas?", 
+          pro: "Rutas de Escalada (PMBOK)" 
+        },
       },
       {
-        de: "Issue-Resolution-SLA dokumentiert",
-        en: "Issue Resolution SLA Documented",
-        es: "SLA de resolución documentado",
+        de: { 
+          simple: "Wie schnell werden Probleme gelöst?", 
+          pro: "Issue Resolution SLA & Response Time Agreement (PMBOK)" 
+        },
+        en: { 
+          simple: "How fast are problems solved?", 
+          pro: "Issue Resolution SLA & Response Time Agreement (PMBOK)" 
+        },
+        es: { 
+          simple: "¿Qué tan rápido se resuelven problemas?", 
+          pro: "SLA de Resolución (PMBOK)" 
+        },
       },
     ],
     kpis: [
       {
-        de: "Durchschnittliche Lösungszeit (MTTR)",
-        en: "Mean Time to Resolution (MTTR)",
-        es: "Tiempo medio de resolución",
+        de: { 
+          simple: "Wie lange dauert es bis ein Problem gelöst ist?", 
+          pro: "Mean Time to Resolution - MTTR (PMBOK Performance)" 
+        },
+        en: { 
+          simple: "How long does it take to solve a problem?", 
+          pro: "Mean Time to Resolution - MTTR (PMBOK Performance)" 
+        },
+        es: { 
+          simple: "¿Cuánto tarda resolver un problema?", 
+          pro: "Tiempo Medio de Resolución - MTTR (PMBOK)" 
+        },
       },
       {
-        de: "Psychologische Sicherheit (Team-Feedback)",
-        en: "Psychological Safety (Team Feedback)",
-        es: "Seguridad psicológica",
+        de: { 
+          simple: "Trauen sich alle Probleme zu melden?", 
+          pro: "Psychological Safety Score - Team Trust Index (Agile)" 
+        },
+        en: { 
+          simple: "Does everyone dare to report problems?", 
+          pro: "Psychological Safety Score - Team Trust Index (Agile)" 
+        },
+        es: { 
+          simple: "¿Todos se atreven a reportar problemas?", 
+          pro: "Seguridad Psicológica (Agile)" 
+        },
       },
     ],
     businessName: {
-      de: "Issue & Risk Management (PMBOK Risk Domain)",
-      en: "Issue & Risk Management",
-      es: "Gestión de Problemas y Riesgos",
+      de: { 
+        simple: "Hindernis-Beseitigung", 
+        pro: "Issue & Risk Management (PMBOK Risk Domain)" 
+      },
+      en: { 
+        simple: "Obstacle Removal", 
+        pro: "Issue & Risk Management (PMBOK Risk Domain)" 
+      },
+      es: { 
+        simple: "Eliminación de Obstáculos", 
+        pro: "Gestión de Problemas (PMBOK Risk Domain)" 
+      },
     },
     hardKpis: [
       {
-        de: "MTTR < 24 Stunden für kritische Issues",
-        en: "MTTR < 24 Hours for Critical Issues",
-        es: "MTTR < 24 horas para críticos",
+        de: { 
+          simple: "Kritische Probleme in 24h gelöst", 
+          pro: "MTTR < 24 Hours for Critical Issues (SLA)" 
+        },
+        en: { 
+          simple: "Critical problems solved in 24h", 
+          pro: "MTTR < 24 Hours for Critical Issues (SLA)" 
+        },
+        es: { 
+          simple: "Problemas críticos resueltos en 24h", 
+          pro: "MTTR < 24 horas (SLA)" 
+        },
       },
       {
-        de: "Risk Exposure Value < 10% Budget",
-        en: "Risk Exposure Value < 10% Budget",
-        es: "Valor de riesgo < 10% presupuesto",
+        de: { 
+          simple: "Risiken kosten maximal 10% des Budgets", 
+          pro: "Risk Exposure Value < 10% Budget (OPM Metric)" 
+        },
+        en: { 
+          simple: "Risks cost max 10% of budget", 
+          pro: "Risk Exposure Value < 10% Budget (OPM Metric)" 
+        },
+        es: { 
+          simple: "Riesgos cuestan máximo 10% del presupuesto", 
+          pro: "Valor de Riesgo < 10% (OPM)" 
+        },
       },
     ],
     roiImpact: {
-      de: "Schnelle Problemlösung verhindert Projektverzögerungen und spart Kosten.",
-      en: "Quick problem resolution prevents project delays and saves costs.",
-      es: "Resolución rápida previene retrasos.",
+      de: { 
+        simple: "Schnelle Problemlösung = weniger Verzögerung = zufriedenere Teams.", 
+        pro: "Proaktives Risk Management reduziert Projektverzögerungen um 35% und spart durchschnittlich 15% Budget (OPM Value)." 
+      },
+      en: { 
+        simple: "Fast problem solving = less delay = happier teams.", 
+        pro: "Proactive risk management reduces project delays by 35% and saves average 15% budget (OPM Value)." 
+      },
+      es: { 
+        simple: "Resolución rápida = menos retrasos = equipos más felices.", 
+        pro: "Gestión proactiva reduce retrasos 35% y ahorra 15% presupuesto (OPM Value)." 
+      },
     },
     category: "Tactical",
     maturityLevels: [],
@@ -1682,9 +1952,9 @@ export const services: PMOService[] = [
       {
         phase: "Monitoring",
         phaseLabel: {
-          de: { simple: "Kontrolle", pro: "Monitoring & Controlling (PMBOK)" },
-          en: { simple: "Control", pro: "Monitoring & Controlling (PMBOK)" },
-          es: { simple: "Control", pro: "Monitoring & Controlling (PMBOK)" },
+          de: { simple: "Kontrolle", pro: "Monitoring (PMBOK)" },
+          en: { simple: "Control", pro: "Monitoring (PMBOK)" },
+          es: { simple: "Control", pro: "Monitoring (PMBOK)" },
         },
         steps: [
           {
